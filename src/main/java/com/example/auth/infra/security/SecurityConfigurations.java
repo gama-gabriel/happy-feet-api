@@ -1,6 +1,6 @@
 package com.example.auth.infra.security;
 
-import com.example.auth.repositories.UserRepository;
+import com.example.auth.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class SecurityConfigurations {
   TokenService tokenService;
 
   @Autowired
-  UserRepository userRepository;
+  ClienteRepository clienteRepository;
 
   @Bean
   public SecurityContextRepository securityContextRepository() {
@@ -32,7 +32,7 @@ public class SecurityConfigurations {
   }
   @Bean
   public SecurityFilter securityFilter() {
-    return new SecurityFilter(tokenService, userRepository, securityContextRepository());
+    return new SecurityFilter(tokenService, clienteRepository, securityContextRepository());
   }
   @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -42,6 +42,8 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/produto").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/variante").permitAll()
                         .requestMatchers(HttpMethod.POST, "/produto").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

@@ -20,6 +20,7 @@ public record ProdutoRequestDTO(
         float preco,
         @NotNull
         GeneroProduto genero,
+        List<Float> tamanhos,
         @NotNull
         List<VarianteRequestDTO> variantes
 ) {

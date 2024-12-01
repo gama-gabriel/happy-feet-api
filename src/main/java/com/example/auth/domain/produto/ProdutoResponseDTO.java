@@ -12,6 +12,7 @@ public record ProdutoResponseDTO(
   String keywords,
   String descricao,
   float preco,
+  List<Float> tamanhos,
   GeneroProduto genero,
   List<Variante> variantes
 ) {
@@ -24,6 +25,7 @@ public record ProdutoResponseDTO(
       produto.getKeywords(),
       produto.getDescricao(),
       produto.getPreco(),
+      produto.getTamanhos(),
       produto.getGenero(),
       produto.getVariantes()
     );

@@ -1,5 +1,13 @@
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS cliente (
     id TEXT PRIMARY KEY UNIQUE NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    documento VARCHAR(100) NOT NULL,
+    telefone VARCHAR(100) NOT NULL,
+    endereco VARCHAR(100) NOT NULL,
+    cep VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(100) NOT NULL,
+    complemento VARCHAR(100) NOT NULL,
     login TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     role TEXT NOT NULL

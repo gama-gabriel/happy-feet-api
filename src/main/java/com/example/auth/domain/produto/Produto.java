@@ -27,7 +27,8 @@ public class Produto {
     private float preco;
     @Enumerated(EnumType.STRING)
     private GeneroProduto genero;
-
+    @Column(columnDefinition = "FLOAT[]")
+    private List<Float> tamanhos;
     @JsonManagedReference
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<Variante> variantes;
@@ -39,6 +40,7 @@ public class Produto {
         this.categoria = data.categoria();
         this.descricao = data.descricao();
         this.preco = data.preco();
+        this.tamanhos = data.tamanhos();
         this.genero = data.genero();
     }
 }

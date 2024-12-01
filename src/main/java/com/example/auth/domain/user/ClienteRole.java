@@ -1,12 +1,12 @@
 package com.example.auth.domain.user;
 
-public enum UserRole {
+public enum ClienteRole {
     ADMIN("admin"),
     USER("user");
 
     private String role;
 
-    UserRole(String role){
+    ClienteRole(String role){
         this.role = role;
     }
 

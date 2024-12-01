@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS produto (
     categoria VARCHAR(100),
     preco DECIMAL(10, 2),
     descricao TEXT,
+    tamanhos FLOAT[],
     genero VARCHAR(20)
 );
 
