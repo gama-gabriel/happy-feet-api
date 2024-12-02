@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
-  @Query(value="select * from produto where keywords like %%:termo%", nativeQuery = true)
+  @Query(value="select * from produto where keywords like %:termo%", nativeQuery = true)
   List<Produto> buscar(@Param("termo") String termo);
 }
