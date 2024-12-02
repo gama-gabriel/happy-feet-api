@@ -45,8 +45,8 @@ public class SecurityConfigurations {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.cors(cors -> cors.disable());
     return httpSecurity
+      .cors(cors -> cors.disable())
       .csrf(csrf -> csrf.disable())
       .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .authorizeRequests(authorize -> authorize
@@ -72,19 +72,5 @@ public class SecurityConfigurations {
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
-  }
-
-  @Bean
-  public CorsConfigurationSource corsConfigurationSource() {
-    CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("https://happy-feet-rouge.vercel.app"));  // Frontend URL
-    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-    configuration.setAllowedHeaders(Arrays.asList("*"));  // Allow all headers
-    configuration.setAllowCredentials(true);  // Allow credentials (cookies, auth tokens)
-
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", configuration);  // Apply this config to all paths
-
-    return source;
   }
 }
