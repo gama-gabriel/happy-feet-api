@@ -27,6 +27,7 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
@@ -37,6 +38,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
+    @CrossOrigin
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid CadastroDTO data){
         if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
@@ -48,6 +50,7 @@ public class AuthenticationController {
 
         return ResponseEntity.ok().build();
     }
+    @CrossOrigin
     @GetMapping("/users")
     ResponseEntity<List<Cliente>> get() {
       List<Cliente> clienteList = this.repository.findAll().stream().toList();
