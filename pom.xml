@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>auth</artifactId>
+	<artifactId>happy_feet_api-</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>auth</name>
-	<description>Demo auth app</description>
+	<description>Happy Feet API</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
