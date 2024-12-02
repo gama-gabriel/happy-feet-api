@@ -76,7 +76,7 @@ public class SecurityConfigurations {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));  // Frontend URL
+    configuration.setAllowedOrigins(Arrays.asList("https://happy-feet-rouge.vercel.app"));  // Frontend URL
     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     configuration.setAllowedHeaders(Arrays.asList("*"));  // Allow all headers
     configuration.setAllowCredentials(true);  // Allow credentials (cookies, auth tokens)
