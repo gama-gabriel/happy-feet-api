@@ -32,7 +32,7 @@ public class ProdutoController {
         return ResponseEntity.ok(productList);
     }
 
-    @GetMapping
+    @GetMapping("busca")
     public ResponseEntity getSearchedProducts(@RequestParam String termo){
       List<ProdutoResponseDTO> productList = this.repository.buscar(termo).stream().map(ProdutoResponseDTO::new).toList();
       return ResponseEntity.ok(productList);
