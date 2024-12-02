@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("produto")
@@ -25,14 +26,24 @@ public class ProdutoController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping
+    @GetMapping("all")
     public ResponseEntity getAllProducts(){
         List<ProdutoResponseDTO> productList = this.repository.findAll().stream().map(ProdutoResponseDTO::new).toList();
 
         return ResponseEntity.ok(productList);
     }
 
-    @GetMapping("busca")
+    @GetMapping
+    public ResponseEntity getProductById(@RequestParam Integer id){
+      Optional<Produto> product = this.repository.findById(id);
+
+      if (product.isPresent()) {
+        return ResponseEntity.ok(new ProdutoResponseDTO(product.get()));
+      }
+      return null;
+    }
+
+  @GetMapping("busca")
     public ResponseEntity getSearchedProducts(@RequestParam String termo){
       List<ProdutoResponseDTO> productList = this.repository.buscar(termo).stream().map(ProdutoResponseDTO::new).toList();
       return ResponseEntity.ok(productList);
